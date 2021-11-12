@@ -1,0 +1,31 @@
+/// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+/// TEST: map-colect()
+/// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+// Dependencies
+@use 'true';
+@use '../../' as tools;
+
+// Test
+@include true.describe('MAP COLECT') {
+    @include true.it('Colect colors map') {
+        @include true.assert {
+            @include true.output {
+                $red:    ( 'red': #ce2f3f );
+                $blue:   ( 'blue': #1381b3 );
+                $green:  ( 'green': #87a03c );
+                $colors: tools.map-collect($red, $blue, $green);
+
+                @each $key, $value in $colors {
+                    --#{$key}: #{$value};
+                }
+            }
+
+            @include true.expect {
+                --red: #ce2f3f;
+                --blue: #1381b3;
+                --green: #87a03c;
+            }
+        }
+    }
+}

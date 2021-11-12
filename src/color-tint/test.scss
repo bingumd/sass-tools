@@ -1,0 +1,22 @@
+/// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+/// TEST: color-tint()
+/// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+// Dependencies
+@use 'true';
+@use '../../' as tools;
+
+// Test
+@include true.describe('COLOR TINT') {
+    @include true.it('Color #000000 to #030303') {
+        @include true.assert {
+            @include true.output {
+                color: tools.color-tint(#000000, 1%);
+            }
+
+            @include true.expect {
+                color:#030303;
+            }
+        }
+    }
+}

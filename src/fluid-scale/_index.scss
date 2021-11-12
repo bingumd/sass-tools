@@ -1,0 +1,44 @@
+/// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+/// FUNCTION: fluid-scale()
+/// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+/// Linearly scale CSS properties with units
+/// based on the viewport defined in config.scss
+/// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+/// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+/// @param  {Map} $value - Min and Max values
+/// @param  {Number} $min-vw - Minimum windows widt
+/// @param  {Number} $max-vw - Maximum windows width
+/// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+/// @return {String} Fluid units
+/// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+// Dependencies
+@use 'sass:math';
+@use 'sass:meta';
+@use 'sass:list';
+@use '../config';
+
+// Function
+@function fluid-scale($value, $min-vw: config.$fluid-breakpoint-min, $max-vw: config.$fluid-breakpoint-max) {
+    @if $value and meta.type-of($value) == number {
+        @return $value;
+    } @else if meta.type-of($value) == list and (list.length($value) == 2 or list.length($value) == 3) {
+        $min: math.abs(list.nth($value, 1));
+        $max: math.abs(list.nth($value, 2));
+        $negative: false;
+
+        @if list.length($value) == 3 {
+            $negative: list.nth($value, 3);
+        }
+
+        $factor: math.div(1, $max-vw - $min-vw) * ($max - $min);
+
+        @if $negative {
+            $calc-value: calc(#{($min - ($min-vw * $factor)) * -1} - #{100vw * $factor});
+            @return clamp((-#{if($min < $max, $max, $min)}), #{$calc-value}, (-#{if($min < $max, $min, $max)}));
+        } @else {
+            $calc-value: calc(#{$min - ($min-vw * $factor)} + #{100vw * $factor});
+            @return clamp(#{if($min > $max, $max, $min)}, #{$calc-value}, #{if($min > $max, $min, $max)});
+        }
+    }
+}

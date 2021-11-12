@@ -1,0 +1,22 @@
+/// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+/// TEST: color-shade()
+/// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+// Dependencies
+@use 'true';
+@use '../../index' as tools;
+
+// Test
+@include true.describe('COLOR SHADE') {
+    @include true.it('Color #ffffff to #f7f7f7') {
+        @include true.assert {
+            @include true.output {
+                color: tools.color-shade(#ffffff, 3%);
+            }
+
+            @include true.expect {
+                color:#f7f7f7;
+            }
+        }
+    }
+}

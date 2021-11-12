@@ -1,0 +1,29 @@
+/// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+/// MIXIN: mq()
+/// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+/// Apply a media query defined in config.scss
+/// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+/// @param {String} $value - breakpoint name
+/// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+/// @return {String} The resulting breakpoint
+/// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+// Dependencies
+@use 'sass:map';
+@use 'sass:meta';
+@use '../config';
+
+// Function
+@mixin mq($value) {
+    @if map.has-key(config.$breakpoints, $value) {
+        @media (min-width: map.get(config.$breakpoints, $value)) {
+            @content;
+        }
+    } @else if meta.type-of($value) == number {
+        @media screen and (min-width: $value) {
+            @content;
+        }
+    } @else {
+        @error "'#{$value}' is not a valid @media.";
+    }
+}

@@ -1,0 +1,20 @@
+/// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+/// FUNCTION: color-shade()
+/// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+/// Slightly darken a color
+/// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+/// @param {Color}  $color - color to shade
+/// @param {Number} $percentage - percentage of `$color` in returned color
+/// @param {Color}  $start - Start color
+/// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+/// @return {Color}  New color
+/// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+// Dependencies
+@use 'sass:color';
+@use '../config';
+
+// Function
+@function color-shade($color, $percentage, $start: config.$shade-color) {
+    @return color.mix($start, $color, $percentage);
+}

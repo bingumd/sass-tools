@@ -1,0 +1,19 @@
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+// CONFIG
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+// Declare the global values
+// -=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+// Default breakpoints
+$breakpoints: (
+    'md': 768px,
+    'lg': 1024px,
+) !default;
+
+// Default fluid breakpoints
+$fluid-breakpoint-min: 450px !default;
+$fluid-breakpoint-max: 1440px !default;
+
+// Colors
+$shade-color: #000000 !default;
+$tint-color: #ffffff !default;

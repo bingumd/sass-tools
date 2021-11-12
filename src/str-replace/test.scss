@@ -1,0 +1,22 @@
+/// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+/// TEST: str-replace()
+/// =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
+
+// Dependencies
+@use 'true';
+@use '../../' as tools;
+
+// Test
+@include true.describe('STR REPLACE') {
+    @include true.it('replace "this is string" to "this is number"') {
+        @include true.assert {
+            @include true.output {
+                content: tools.str-replace('this is string', 'string', 'number');
+            }
+
+            @include true.expect {
+                content: "this is number";
+            }
+        }
+    }
+}

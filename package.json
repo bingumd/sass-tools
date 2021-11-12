@@ -1,0 +1,28 @@
+{
+  "name": "@bingumd/sass-tools",
+  "version": "1.0.0",
+  "author": "bingumd <bingumd@gmail.com>",
+  "description": "Sass plugin to add a collection of mixins, helpers and tools for your project",
+  "main": "index.scss",
+  "homepage": "https://github.com/bingumd/sass-tools",
+  "license": "MIT",
+  "repository": "bingumd/sass-tools",
+  "keywords": [
+    "css",
+    "sass",
+    "scss",
+    "scss-plugin",
+    "sass-plugin",
+    "utility",
+    "helpers",
+    "mixins"
+  ],
+  "scripts": {
+    "test": "jest"
+  },
+  "devDependencies": {
+    "jest": "^27.3.1",
+    "sass": "^1.43.4",
+    "sass-true": "^6.0.1"
+  }
+}
