@@ -25,7 +25,7 @@ yarn install @bingumd/sass-tools
 * [fluid-scale](src/fluid-scale/README.md)
 * [map-collect](src/map-collect/README.md)
 * [str-replace](src/str-replace/README.md)
-* [color-shade](src/color-sahde/README.md)
+* [color-shade](src/color-shade/README.md)
 * [color-tint](src/color-tint/README.md)
 
 ### Mixins
